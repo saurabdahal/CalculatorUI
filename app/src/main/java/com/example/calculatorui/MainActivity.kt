@@ -26,6 +26,10 @@ import androidx.compose.ui.unit.dp
 import com.example.calculatorui.ui.theme.CalculatorUITheme
 
 class MainActivity : ComponentActivity() {
+    /**
+     * Main entry point for the calculator application.
+     */
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -33,6 +37,14 @@ CalcView()
         }
     }
 }
+
+/**
+ * The main composable function for the calculator UI.
+ * Builds the overall structure of the calculator with a display,
+ * numeric buttons, operation buttons, and an equals button.
+ * Rows and Columns for the buttons as well as the positioning of the display
+ * can be controlled from this composable
+ */
 
 @Composable
 fun CalcView(){
@@ -64,6 +76,14 @@ fun CalcView(){
     }
 }
 
+/**
+Composable to format the structure of the buttons
+ * @param display: MutableState<String> : display parameter which is the main component to
+ *  handle display on the app
+ * @param startNum: Int : this is the starting number for the numeric button
+ * @param numButtons: Int : this determines how many buttons we need in a row
+ */
+
 @Composable
 fun CalcRow(
     display: MutableState<String>, startNum: Int, numButtons: Int
@@ -77,6 +97,11 @@ fun CalcRow(
     }
 }
 
+/**
+ * Composable function for displaying the calculator's output.
+ * @param display:MutableState<String> : display parameter which is the main component to
+ * handle display on the app
+ */
 @Composable
 fun CalcDisplay(display: MutableState<String>) {
     Text(
@@ -88,6 +113,13 @@ fun CalcDisplay(display: MutableState<String>) {
     )
 }
 
+/**
+* Composable to handle numeric buttons. Any feature on the buttons can be
+* modified from this method
+* @param number: Int : Number that is displayed on the button
+* @param display: MutableState<String> : the value that is displayed on the display
+*/
+
 @Composable
 fun CalcNumericButton(number: Int, display: MutableState<String>) {
     Button(
@@ -98,6 +130,12 @@ fun CalcNumericButton(number: Int, display: MutableState<String>) {
     }
 }
 
+/**
+ * Composable to handle Operation buttons. Any feature on the buttons can be
+ * modified from this method
+ * @param operation: String : Operation that is displayed on the button
+ * @param display: MutableState<String> : the value that is displayed on the display
+ */
 @Composable
 fun CalcOperationButton(operation: String, display: MutableState<String>) {
     Button(
@@ -108,6 +146,11 @@ fun CalcOperationButton(operation: String, display: MutableState<String>) {
     }
 }
 
+/**
+ * Composable to handle Equals buttons. Any feature on the buttons can be
+ * modified from this method
+ * @param display: MutableState<String> : the value that is displayed on the display
+ */
 @Composable
 fun CalcEqualsButton(display: MutableState<String>) {
     Button(
