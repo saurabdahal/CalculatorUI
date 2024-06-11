@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,6 +14,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,8 +36,16 @@ fun CalcView(){
 }
 
 @Composable
-fun CalcRow(){
+fun CalcRow(
+    display: MutableState<String>, startNum: Int, numButtons: Int
+) {
+    val endNum = startNum + numButtons
 
+    Row(modifier = Modifier.padding(0.dp)) { // Row with 0dp padding
+        for (i in startNum until endNum) {
+            CalcNumericButton(number = i, display = display)
+        }
+    }
 }
 
 @Composable
